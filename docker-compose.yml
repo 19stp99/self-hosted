@@ -26,6 +26,10 @@ services:
 
   datasource:
     container_name: datasource
+    volumes:
+      - ./ca:/usr/datasource/ca
+    environment:
+      - NODE_EXTRA_CA_CERTS=/usr/datasource/ca/pve-ssl.pem
     image: cruibakeryonprem.azurecr.io/cloud/datasource:latest
     restart: always
     env_file: .env
